@@ -1,0 +1,87 @@
+AARCH64 GAS  /tmp/ccsw0Hvh.s 			page 1
+
+
+   1              	# 1 "first.S"
+   1              	//
+   1              	...
+   0              	
+   0              	
+   1              	/* Copyright (C) 1991-2012 Free Software Foundation, Inc.
+   2              	//My first assembly language profram
+   3              	//Name: Maria Pacifico
+   4              	//
+   5              	
+   6              	.text
+   7              	.global first
+   8              	.global second
+   9              	.global min
+  10              	.global bit_counter
+  11              	
+  12              	first:
+  13 0000 E10300AA 	  mov x1, x0
+  14 0004 0000018B 	  add x0, x0, x1
+  15 0008 0000018B 	  add x0, x0, x1
+  16 000c C0035FD6 	  ret
+  17              	
+  18              	second:
+  19 0010 000001CB 	  sub x0, x0, x1
+  20 0014 C0035FD6 	  ret
+  21              	
+  22              	min:
+  23 0018 020001EB 	  subs x2, x0, x1 //x0 set to a-b
+  24 001c 4A000054 	  bge b_is_minimum // if a >= b
+  25              	
+  26              	  //In this case a is minimum
+  27 0020 02000014 	  b after_block
+  28              	
+  29              	b_is_minimum:
+  30              	  // In this case b is the minimum
+  31 0024 E00301AA 	  mov x0, x1
+  32              	
+  33              	after_block:
+  34 0028 C0035FD6 	  ret
+  35              	
+  36              	bit_counter:
+  37 002c 010080D2 	  mov x1, #0 //cnt = 0
+  38              	  
+  39              	  //for loop initialization
+  40 0030 020080D2 	  mov x2, #0 // i = 0
+  41              	
+  42              	forloop:
+  43              	  //for loop test: i != 64
+  44 0034 430001F1 	  subs x3, x2, #64 // x3 = i - 64
+  45 0038 E0000054 	  beq loopend // if i==64
+  46              	  
+  47 003c 030040F2 	  ands x3, x0, #1 // x0 & 1
+  48 0040 40000054 	  beq after_inc
+  49              	
+  50 0044 21040091 	  add x1, x1, #1 // cnt++
+  51              	after_inc:
+  52 0048 00FC41D3 	  lsr x0, x0, #1
+AARCH64 GAS  /tmp/ccsw0Hvh.s 			page 2
+
+
+  53              	
+  54              	  //increment /i++
+  55 004c 42040091 	  add x2, x2, #1 // i ++
+  56 0050 F9FFFF17 	  b forloop
+  57              	
+  58              	loopend:
+  59 0054 E00301AA 	  mov x0, x1
+  60 0058 C0035FD6 	  ret
+AARCH64 GAS  /tmp/ccsw0Hvh.s 			page 3
+
+
+DEFINED SYMBOLS
+             first.S:12     .text:0000000000000000 first
+             first.S:18     .text:0000000000000010 second
+             first.S:22     .text:0000000000000018 min
+             first.S:36     .text:000000000000002c bit_counter
+             first.S:13     .text:0000000000000000 $x
+             first.S:29     .text:0000000000000024 b_is_minimum
+             first.S:33     .text:0000000000000028 after_block
+             first.S:42     .text:0000000000000034 forloop
+             first.S:58     .text:0000000000000054 loopend
+             first.S:51     .text:0000000000000048 after_inc
+
+NO UNDEFINED SYMBOLS
