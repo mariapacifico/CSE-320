@@ -5,5 +5,4 @@ main.o: main.c
 	gcc -c -Wall main.c
 
 decoder.o: decoder.c decoder.h
-	gcc -std=c99 -c -Wall decoder.c
-
+	gcc -c -Wall decoder.c
